@@ -27,7 +27,7 @@
             <Font size="21.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="scomposizione" layoutX="53.0" layoutY="139.0" mnemonicParsing="false" text="Scomposizione in numeri primi" toggleGroup="$homeGroup">
+      <RadioButton fx:id="scomposizione" layoutX="53.0" layoutY="139.0" mnemonicParsing="false" text="Scomposizione in fattori primi" toggleGroup="$homeGroup">
          <font>
             <Font size="21.0" />
          </font>

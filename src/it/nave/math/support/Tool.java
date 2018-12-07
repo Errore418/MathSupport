@@ -18,6 +18,12 @@ public class Tool {
 		return stage;
 	}
 
+	public static void startNewStage(String fxml, String title, Node node) throws IOException {
+		Stage stage = Tool.setStandardStage(new Stage(), fxml, title);
+		stage.show();
+		Tool.closeStage(node);
+	}
+
 	public static void closeStage(Node node) {
 		Stage stage = (Stage) node.getScene().getWindow();
 		stage.close();
