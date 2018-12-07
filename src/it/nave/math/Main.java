@@ -3,6 +3,7 @@ package it.nave.math;
 import java.io.IOException;
 import java.net.URL;
 
+import it.nave.math.support.Tool;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,11 +13,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Welcome");
-		primaryStage.setScene(scene);
-		primaryStage.setResizable(false); //FIXME computazionalmente più efficiente di rendere gli elementi dinamici kappa
+		Tool.setStandardStage(primaryStage, "Home.fxml", "Welcome");
 		primaryStage.show();
 	}
 

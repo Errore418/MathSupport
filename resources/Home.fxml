@@ -7,37 +7,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.HomeController">
    <children>
-      <Label layoutX="79.0" layoutY="14.0" text="Selezionare un argomento" textFill="RED">
+      <Label fx:id="HomeLabel" layoutX="79.0" layoutY="14.0" text="Selezionare un argomento" textFill="RED">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <RadioButton layoutX="53.0" layoutY="77.0" mnemonicParsing="false" selected="true" text="Algoritmo di Euclide">
+      <RadioButton fx:id="euclide" layoutX="53.0" layoutY="77.0" mnemonicParsing="false" selected="true" text="Algoritmo di Euclide">
          <font>
             <Font size="21.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="Home" />
+            <ToggleGroup fx:id="homeGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="53.0" layoutY="108.0" mnemonicParsing="false" text="Crivello di Eratostene" toggleGroup="$Home">
+      <RadioButton fx:id="eratostene" layoutX="53.0" layoutY="108.0" mnemonicParsing="false" text="Crivello di Eratostene" toggleGroup="$homeGroup">
          <font>
             <Font size="21.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="53.0" layoutY="139.0" mnemonicParsing="false" text="Scomposizione in numeri primi" toggleGroup="$Home">
+      <RadioButton fx:id="scomposizione" layoutX="53.0" layoutY="139.0" mnemonicParsing="false" text="Scomposizione in numeri primi" toggleGroup="$homeGroup">
          <font>
             <Font size="21.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="53.0" layoutY="170.0" mnemonicParsing="false" text="MCD e mcm" toggleGroup="$Home">
+      <RadioButton fx:id="MCDmcm" layoutX="53.0" layoutY="170.0" mnemonicParsing="false" text="MCD e mcm" toggleGroup="$homeGroup">
          <font>
             <Font size="21.0" />
          </font>
       </RadioButton>
-      <Button layoutX="75.0" layoutY="232.0" mnemonicParsing="false" prefHeight="103.0" prefWidth="255.0" text="OK">
+      <Button fx:id="HomeButton" layoutX="75.0" layoutY="232.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="103.0" prefWidth="255.0" text="OK">
          <font>
             <Font size="48.0" />
          </font>
