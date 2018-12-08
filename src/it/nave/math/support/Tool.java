@@ -11,8 +11,8 @@ import javafx.scene.control.TextInputControl;
 import javafx.stage.Stage;
 
 public class Tool {
-	private static String TEMPLATE = "%d^%d";
-	private static String TEMPLATE_SHORT = "%d";
+	private static String FACTORS_TEMPLATE = "%d^%d";
+	private static String FACTORS_TEMPLATE_SHORT = "%d";
 
 	public static Stage setStandardStage(Stage stage, String fxmlFile, String title) throws IOException {
 		Parent root = FXMLLoader.load(Tool.class.getClassLoader().getResource(fxmlFile));
@@ -34,9 +34,10 @@ public class Tool {
 	}
 
 	public static void writeFactors(Map<Long, Integer> factors, TextInputControl output) {
-		output.setText("");
-		factors.entrySet().stream().sorted((a, b) -> a.getKey().compareTo(b.getKey())).map(
-				e -> String.format((e.getValue() > 1) ? TEMPLATE : TEMPLATE_SHORT, e.getKey(), e.getValue()) + "\n")
+		output.clear();
+		factors.entrySet().stream().sorted((a, b) -> a.getKey().compareTo(b.getKey()))
+				.map(e -> String.format((e.getValue() > 1) ? FACTORS_TEMPLATE : FACTORS_TEMPLATE_SHORT, e.getKey(),
+						e.getValue()) + "\n")
 				.forEach(output::appendText);
 	}
 

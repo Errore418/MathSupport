@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.EuclideController">
+   <children>
+      <Label layoutX="270.0" layoutY="14.0" text="Algoritmo di Euclide" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="67.0" text="Primo numero" />
+      <Label layoutX="408.0" layoutY="67.0" text="Secondo numero" />
+      <TextField fx:id="input1" layoutX="152.0" layoutY="63.0" />
+      <TextField fx:id="input2" layoutX="535.0" layoutY="63.0" />
+      <TextArea fx:id="euclide" layoutX="84.0" layoutY="163.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="bezout" layoutX="491.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="130.0" layoutY="132.0" text="Algoritmo di Euclide" />
+      <Label layoutX="582.0" layoutY="141.0" text="Identità di Bézout" />
+      <Label layoutX="75.0" layoutY="412.0" text="MCD" />
+      <TextField fx:id="MCD" layoutX="198.0" layoutY="408.0" prefHeight="25.0" prefWidth="117.0" />
+      <TextField fx:id="MCD2" layoutX="436.0" layoutY="408.0" prefHeight="25.0" prefWidth="243.0" />
+      <Label layoutX="373.0" layoutY="412.0" text="=" />
+      <Button layoutX="84.0" layoutY="507.0" mnemonicParsing="false" onAction="#calcola" prefHeight="84.0" prefWidth="215.0" text="CALCOLA" />
+      <Button layoutX="414.0" layoutY="507.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="84.0" prefWidth="215.0" text="INDIETRO" />
+   </children>
+</AnchorPane>
