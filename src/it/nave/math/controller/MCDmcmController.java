@@ -45,17 +45,8 @@ public class MCDmcmController {
 
 	@FXML
 	private void trova() {
-		long n1 = 0;
-		long n2 = 0;
-		try {
-			n1 = Long.parseLong(input1.getText());
-			n2 = Long.parseLong(input2.getText());
-			if (n1 <= 0 || n2 <= 0) {
-				inputNotValid();
-			}
-		} catch (NumberFormatException e) {
-			inputNotValid();
-		}
+		long n1 = parseTextInputControl(input1);
+		long n2 = parseTextInputControl(input2);
 		ScomponiService scomponi1 = new ScomponiService(n1, scomposizione1);
 		ScomponiService scomponi2 = new ScomponiService(n2, scomposizione2);
 		Map<Long, Integer> factors1 = scomponi1.scomponi();
@@ -66,6 +57,19 @@ public class MCDmcmController {
 		Tool.writeFactors(factorsmcm, scomposizionemcm);
 		calculateAndWrite(factorsMCD, MCD);
 		calculateAndWrite(factorsmcm, mcm);
+	}
+
+	private long parseTextInputControl(TextInputControl input) {
+		long result = 0;
+		try {
+			result = Long.parseLong(input.getText());
+			if (result <= 0) {
+				inputNotValid();
+			}
+		} catch (NumberFormatException e) {
+			inputNotValid();
+		}
+		return result;
 	}
 
 	private Map<Long, Integer> calculateMCD(Map<Long, Integer> factors1, Map<Long, Integer> factors2) {
