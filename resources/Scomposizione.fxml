@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.ScomponiController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.ScomponiController">
    <children>
       <Label layoutX="85.0" layoutY="22.0" text="Scomposizione in fattori primi" textFill="RED">
          <font>
@@ -21,8 +21,14 @@
       </Label>
       <TextField fx:id="input" layoutX="213.0" layoutY="99.0" prefHeight="25.0" prefWidth="211.0" promptText="Numero intero naturale" />
       <TextArea fx:id="result" layoutX="213.0" layoutY="140.0" prefHeight="196.0" prefWidth="211.0" promptText="Risultato" />
-      <Button fx:id="scomponi" layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#scomponi" prefHeight="117.0" prefWidth="219.0" text="SCOMPONI" />
-      <Button fx:id="back" layoutX="267.0" layoutY="365.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="117.0" prefWidth="219.0" text="INDIETRO" />
+      <Button layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#scomponi" prefHeight="117.0" prefWidth="219.0" text="SCOMPONI">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="267.0" layoutY="365.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="117.0" prefWidth="219.0" text="INDIETRO">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <Label layoutX="141.0" layoutY="226.0" text="Risultato">
          <font>
             <Font size="16.0" />

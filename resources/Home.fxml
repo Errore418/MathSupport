@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.HomeController">
    <children>
-      <Label fx:id="HomeLabel" layoutX="79.0" layoutY="14.0" text="Selezionare un argomento" textFill="RED">
+      <Label layoutX="79.0" layoutY="14.0" text="Selezionare un argomento" textFill="RED">
          <font>
             <Font size="21.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font size="21.0" />
          </font>
       </RadioButton>
-      <Button fx:id="HomeButton" layoutX="75.0" layoutY="232.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="103.0" prefWidth="255.0" text="OK">
+      <Button layoutX="75.0" layoutY="232.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="103.0" prefWidth="255.0" text="OK">
          <font>
             <Font size="48.0" />
          </font>

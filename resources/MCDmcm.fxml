@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.MCDmcmController">
+   <children>
+      <Label layoutX="283.0" layoutY="14.0" text="MCD e mcm" textFill="RED">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="58.0" layoutY="636.0" mnemonicParsing="false" onAction="#trova" prefHeight="124.0" prefWidth="265.0" text="TROVA">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="402.0" layoutY="636.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="124.0" prefWidth="265.0" text="INDIETRO">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="43.0" layoutY="88.0" text="Primo numero">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="88.0" text="Secondo numero">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="input1" layoutX="152.0" layoutY="88.0" promptText="Numero intero positivo" />
+      <TextField fx:id="input2" layoutX="536.0" layoutY="88.0" promptText="Numero intero positivo" />
+      <TextArea fx:id="scomposizione1" layoutX="96.0" layoutY="168.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione primo numero" />
+      <TextArea fx:id="scomposizione2" layoutX="447.0" layoutY="168.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione secondo numero" />
+      <Label layoutX="89.0" layoutY="143.0" text="Scomposizione primo numero">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="431.0" layoutY="143.0" text="Scomposizione secondo numero">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="356.0" text="Scomposizione MCD">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="474.0" layoutY="356.0" text="Scomposizione mcm">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="scomposizioneMCD" layoutX="96.0" layoutY="381.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione MCD" />
+      <TextArea fx:id="scomposizionemcm" layoutX="447.0" layoutY="381.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione mcm" />
+      <TextField fx:id="MCD" layoutX="134.0" layoutY="566.0" prefHeight="25.0" prefWidth="165.0" promptText="MCD" />
+      <TextField fx:id="mcm" layoutX="485.0" layoutY="566.0" prefHeight="25.0" prefWidth="165.0" promptText="mcm" />
+      <Label layoutX="81.0" layoutY="566.0" text="MCD">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="433.0" layoutY="566.0" text="mcm">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
