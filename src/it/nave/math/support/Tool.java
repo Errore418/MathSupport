@@ -18,7 +18,7 @@ public class Tool {
 		Parent root = FXMLLoader.load(Tool.class.getClassLoader().getResource(fxmlFile));
 		stage.setTitle(title);
 		stage.setScene(new Scene(root));
-		stage.setResizable(false); // FIXME computazionalmente più efficiente di rendere gli elementi dinamici
+//		stage.setResizable(false); // FIXME computazionalmente più efficiente di rendere gli elementi dinamici
 		return stage;
 	}
 
