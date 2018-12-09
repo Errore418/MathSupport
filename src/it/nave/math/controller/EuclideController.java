@@ -10,12 +10,9 @@ import it.nave.math.data.Num;
 import it.nave.math.support.Tool;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
 
 public class EuclideController {
 	private static String EUCLIDE_STEP_TEMPLATE = "%s = %s + %s";
@@ -49,8 +46,19 @@ public class EuclideController {
 
 	@FXML
 	private void calcola() {
-		long n1 = parseTextInputControl(input1);
-		long n2 = parseTextInputControl(input2);
+		long n1 = 0;
+		long n2 = 0;
+		try {
+			n1 = Tool.parseLongTextInputControl(input1, 0, Tool.MESSAGE_POSITIVE);
+			n2 = Tool.parseLongTextInputControl(input2, 0, Tool.MESSAGE_POSITIVE);
+		} catch (NumberFormatException e) {
+			Tool.inputNotValid(Tool.MESSAGE_POSITIVE);
+			euclide.clear();
+			bezout.clear();
+			MCD.clear();
+			MCD2.clear();
+			return;
+		}
 		Timeline euclide = new Timeline();
 		List<EuclideStep> euclideSteps = executeEuclide(n1, n2, euclide);
 		Timeline bezout = executeBezout(euclideSteps);
@@ -124,25 +132,5 @@ public class EuclideController {
 		Num positive = (step.getBig().getCoefficient() > 0) ? step.getBig() : step.getSmall();
 		Num negative = (step.getBig().getCoefficient() > 0) ? step.getSmall() : step.getBig();
 		return positive + " " + negative;
-	}
-
-	private long parseTextInputControl(TextInputControl input) {
-		long result = 0;
-		try {
-			result = Long.parseLong(input.getText());
-			if (result <= 0) {
-				inputNotValid();
-			}
-		} catch (NumberFormatException e) {
-			inputNotValid();
-		}
-		return result;
-	}
-
-	private void inputNotValid() {
-		Alert alert = new Alert(AlertType.ERROR, "La stringa inserita non è un intero positivo valido");
-		alert.setTitle("ERRORE");
-		alert.setHeaderText("Errore nel parsing");
-		alert.showAndWait();
 	}
 }

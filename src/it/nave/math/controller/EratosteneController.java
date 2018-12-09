@@ -9,14 +9,11 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -69,7 +66,14 @@ public class EratosteneController {
 	@FXML
 	private void setaccia() {
 		Timeline populate = null;
-		if (parseTextInputControl(input) != gridpane.getChildren().size()) {
+		int current = 0;
+		try {
+			current = Tool.parseIntTextInputControl(input, 0, Tool.MESSAGE_POSITIVE);
+		} catch (NumberFormatException e) {
+			Tool.inputNotValid(Tool.MESSAGE_POSITIVE);
+			return;
+		}
+		if (current != gridpane.getChildren().size()) {
 			populate = populateGridPane();
 		}
 		Timeline setaccio = buildSetaccioTimeline();
@@ -161,7 +165,7 @@ public class EratosteneController {
 	}
 
 	private Timeline populateGridPane() {
-		n = parseTextInputControl(input);
+		n = Tool.parseIntTextInputControl(input, 0, Tool.MESSAGE_POSITIVE);
 		double buildFrameDuration = (n > DEFAULT_NUM) ? BUILD_FRAME_DURATION_DEFAULT * DEFAULT_NUM / n
 				: BUILD_FRAME_DURATION_DEFAULT;
 		long countFrame = 0;
@@ -214,26 +218,6 @@ public class EratosteneController {
 		double y = (num < n / 2) ? node.getBoundsInParent().getMinY() : node.getBoundsInParent().getMaxY();
 		scrollpane.setVvalue(y / height);
 		scrollpane.setHvalue(x / width);
-	}
-
-	private int parseTextInputControl(TextInputControl input) {
-		int result = 0;
-		try {
-			result = Integer.parseInt(input.getText());
-			if (result <= 0) {
-				inputNotValid();
-			}
-		} catch (NumberFormatException e) {
-			inputNotValid();
-		}
-		return result;
-	}
-
-	private void inputNotValid() {
-		Alert alert = new Alert(AlertType.ERROR, "La stringa inserita non è un intero positivo valido");
-		alert.setTitle("ERRORE");
-		alert.setHeaderText("Errore nel parsing");
-		alert.showAndWait();
 	}
 
 }

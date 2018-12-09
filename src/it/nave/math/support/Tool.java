@@ -11,13 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Tool {
-	private static String FACTORS_TEMPLATE = "%d^%d";
-	private static String FACTORS_TEMPLATE_SHORT = "%d";
+	public static final String MESSAGE_POSITIVE = "La stringa inserita non è un intero positivo valido";
+	public static final String MESSAGE_GREATER_ZERO = "La stringa inserita non è un intero naturale valido";
+
+	private static final String FACTORS_TEMPLATE = "%d^%d";
+	private static final String FACTORS_TEMPLATE_SHORT = "%d";
 
 	public static Stage setStandardStage(Stage stage, String fxmlFile, String title) throws IOException {
 		Parent root = FXMLLoader.load(Tool.class.getClassLoader().getResource(fxmlFile));
@@ -53,6 +58,31 @@ public class Tool {
 
 	public static KeyFrame buildKeyFrame(long numFrame, EventHandler<ActionEvent> e, double millis) {
 		return new KeyFrame(Duration.millis(millis * numFrame), e);
+	}
+
+	public static long parseLongTextInputControl(TextInputControl input, int min, String msg) {
+		long result = 0;
+		result = Long.parseLong(input.getText());
+		if (result <= min) {
+			throw new NumberFormatException();
+		}
+		return result;
+	}
+
+	public static int parseIntTextInputControl(TextInputControl input, int min, String msg) {
+		int result = 0;
+		result = Integer.parseInt(input.getText());
+		if (result <= min) {
+			throw new NumberFormatException();
+		}
+		return result;
+	}
+
+	public static void inputNotValid(String msg) {
+		Alert alert = new Alert(AlertType.ERROR, msg);
+		alert.setTitle("ERRORE");
+		alert.setHeaderText("Errore nel parsing");
+		alert.showAndWait();
 	}
 
 }

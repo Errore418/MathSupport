@@ -27,8 +27,8 @@ public class ScomponiService {
 				factors.put(divisor, ++count);
 				n /= divisor;
 			}
-			Tool.writeFactors(factors, output);
 		}
+		Tool.writeFactors(factors, output);
 		return factors;
 	}
 
