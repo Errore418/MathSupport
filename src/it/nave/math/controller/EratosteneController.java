@@ -5,10 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import it.nave.math.support.Tool;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -22,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 public class EratosteneController {
 	private static final int LABEL_SIZE = 50;
@@ -92,7 +88,7 @@ public class EratosteneController {
 				: SETACCIO_FRAME_DURATION_DEFAULT;
 		long countFrame = 0;
 		Timeline timeline = new Timeline();
-		addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
+		Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 			setaccia.setDisable(true);
 			indietro.setDisable(true);
 			clean();
@@ -103,7 +99,7 @@ public class EratosteneController {
 		int num = 0;
 		while ((num = searchFirstNum()) != -1) {
 			final int numFinal = num;
-			addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
+			Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 				ensureVisible(numFinal);
 				markAsPrime(numFinal);
 			});
@@ -112,7 +108,7 @@ public class EratosteneController {
 				for (int i = num + 1; i <= n; i++) {
 					if (i % num == 0 && !deletes.contains(i)) {
 						final int iFinal = i;
-						addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
+						Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 							ensureVisible(iFinal);
 							markAsDelete(iFinal);
 						});
@@ -123,7 +119,7 @@ public class EratosteneController {
 			deletes.add(num++);
 		}
 
-		addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
+		Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 			setaccia.setDisable(false);
 			indietro.setDisable(false);
 		});
@@ -170,17 +166,17 @@ public class EratosteneController {
 				: BUILD_FRAME_DURATION_DEFAULT;
 		long countFrame = 0;
 		Timeline timeline = new Timeline();
-		addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
+		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 			setaccia.setDisable(true);
 			indietro.setDisable(true);
 		});
-		addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> gridpane.getChildren().clear());
+		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> gridpane.getChildren().clear());
 		VBox useless = new VBox();
 		useless.setStyle(STYLE);
 		useless.setMinSize(LABEL_SIZE, LABEL_SIZE);
 		useless.setPrefSize(LABEL_SIZE, LABEL_SIZE);
 		useless.setMaxSize(LABEL_SIZE, LABEL_SIZE);
-		addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
+		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 			gridpane.add(useless, 0, 0);
 		});
 		int column = 1;
@@ -194,7 +190,7 @@ public class EratosteneController {
 			label.setStyle(STYLE);
 			final int columnFinal = column;
 			final int rowFinal = row;
-			addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
+			Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 				gridpane.add(label, columnFinal, rowFinal);
 			});
 			column++;
@@ -203,7 +199,7 @@ public class EratosteneController {
 				row++;
 			}
 		}
-		addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
+		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 			setaccia.setDisable(false);
 			indietro.setDisable(false);
 		});
@@ -218,15 +214,6 @@ public class EratosteneController {
 		double y = (num < n / 2) ? node.getBoundsInParent().getMinY() : node.getBoundsInParent().getMaxY();
 		scrollpane.setVvalue(y / height);
 		scrollpane.setHvalue(x / width);
-	}
-
-	private void addKeyFrame(Timeline timeline, long numFrame, double millis, EventHandler<ActionEvent> e) {
-		KeyFrame frame = buildKeyFrame(numFrame, e, millis);
-		timeline.getKeyFrames().add(frame);
-	}
-
-	private KeyFrame buildKeyFrame(long numFrame, EventHandler<ActionEvent> e, double millis) {
-		return new KeyFrame(Duration.millis(millis * numFrame), e);
 	}
 
 	private int parseTextInputControl(TextInputControl input) {

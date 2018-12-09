@@ -4,8 +4,8 @@ public class Num {
 	private static final String STRING_TEMPLATE = "%d * %d";
 	private static final String STRING_TEMPLATE_SHORT = "%d";
 
-	private long value;
-	private long coefficient;
+	private final long value;
+	private final long coefficient;
 
 	public Num(long value, long coefficient) {
 		this.value = value;
@@ -16,16 +16,8 @@ public class Num {
 		return value;
 	}
 
-	public void setValue(long value) {
-		this.value = value;
-	}
-
 	public long getCoefficient() {
 		return coefficient;
-	}
-
-	public void setCoefficient(long coefficient) {
-		this.coefficient = coefficient;
 	}
 
 	public boolean isSameValue(Num other) {
@@ -48,19 +40,19 @@ public class Num {
 	}
 
 	public Num multiply(long x) {
-		coefficient *= x;
-		return this;
+		return new Num(this.value, this.coefficient * x);
+	}
+
+	public Num multiply(Num o) {
+		return multiply(o.getCoefficient());
 	}
 
 	public Num add(long x) {
-		coefficient += x;
-		return this;
+		return new Num(this.value, this.coefficient + x);
 	}
 
 	public Num add(Num o) {
-		assert (value == o.getValue());
-		coefficient += o.getCoefficient();
-		return this;
+		return add(o.getCoefficient());
 	}
 
 }
