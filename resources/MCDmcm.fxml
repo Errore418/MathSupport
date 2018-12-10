@@ -114,12 +114,12 @@
 						<TextField fx:id="mcm" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="mcm" HBox.hgrow="ALWAYS" />
 					</children>
 				</HBox>
-				<Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#trova" prefHeight="102.0" prefWidth="200.0" text="TROVA" GridPane.rowIndex="5">
+				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#trova" text="TROVA" GridPane.rowIndex="5">
 					<font>
 						<Font size="18.0" />
 					</font>
 				</Button>
-				<Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="102.0" prefWidth="200.0" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="5">
+				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="5">
 					<font>
 						<Font size="18.0" />
 					</font>
