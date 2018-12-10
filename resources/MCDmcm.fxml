@@ -1,77 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.MCDmcmController">
-   <children>
-      <Label layoutX="283.0" layoutY="14.0" text="MCD e mcm" textFill="RED">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="58.0" layoutY="636.0" mnemonicParsing="false" onAction="#trova" prefHeight="124.0" prefWidth="265.0" text="TROVA">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="402.0" layoutY="636.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="124.0" prefWidth="265.0" text="INDIETRO">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="43.0" layoutY="88.0" text="Primo numero">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="400.0" layoutY="88.0" text="Secondo numero">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="input1" layoutX="152.0" layoutY="88.0" promptText="Numero intero positivo" />
-      <TextField fx:id="input2" layoutX="536.0" layoutY="88.0" promptText="Numero intero positivo" />
-      <TextArea fx:id="scomposizione1" layoutX="96.0" layoutY="168.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione primo numero" />
-      <TextArea fx:id="scomposizione2" layoutX="447.0" layoutY="168.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione secondo numero" />
-      <Label layoutX="89.0" layoutY="143.0" text="Scomposizione primo numero">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="431.0" layoutY="143.0" text="Scomposizione secondo numero">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="123.0" layoutY="356.0" text="Scomposizione MCD">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="474.0" layoutY="356.0" text="Scomposizione mcm">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="scomposizioneMCD" layoutX="96.0" layoutY="381.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione MCD" />
-      <TextArea fx:id="scomposizionemcm" layoutX="447.0" layoutY="381.0" prefHeight="150.0" prefWidth="200.0" promptText="Scomposizione mcm" />
-      <TextField fx:id="MCD" layoutX="134.0" layoutY="566.0" prefHeight="25.0" prefWidth="165.0" promptText="MCD" />
-      <TextField fx:id="mcm" layoutX="485.0" layoutY="566.0" prefHeight="25.0" prefWidth="165.0" promptText="mcm" />
-      <Label layoutX="81.0" layoutY="566.0" text="MCD">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="433.0" layoutY="566.0" text="mcm">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.MCDmcmController">
+	<content>
+		<GridPane hgap="15.0" prefHeight="614.0" prefWidth="800.0" vgap="15.0">
+			<columnConstraints>
+				<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+				<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Label text="MCD e mcm" textFill="RED" GridPane.columnSpan="2147483647">
+					<font>
+						<Font size="30.0" />
+					</font>
+				</Label>
+				<HBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="1">
+					<children>
+						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="102.0" text="Primo numero">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextField fx:id="input1" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero intero positivo" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+					<children>
+						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="122.0" text="Secondo numero">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextField fx:id="input2" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero intero positivo" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<VBox alignment="CENTER" spacing="5.0" GridPane.rowIndex="2">
+					<children>
+						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="213.0" text="Scomposizione primo numero">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextArea fx:id="scomposizione1" maxWidth="500.0" minHeight="100.0" minWidth="100.0" promptText="Scomposizione primo numero" VBox.vgrow="ALWAYS" />
+					</children>
+				</VBox>
+				<VBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+					<children>
+						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="231.0" text="Scomposizione secondo numero">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextArea fx:id="scomposizione2" maxWidth="500.0" minHeight="100.0" minWidth="100.0" promptText="Scomposizione secondo numero" VBox.vgrow="ALWAYS" />
+					</children>
+				</VBox>
+				<VBox alignment="CENTER" spacing="5.0" GridPane.rowIndex="3">
+					<children>
+						<Label text="Scomposizione MCD">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextArea fx:id="scomposizioneMCD" maxWidth="500.0" minHeight="100.0" minWidth="100.0" promptText="Scomposizione MCD" VBox.vgrow="ALWAYS" />
+					</children>
+				</VBox>
+				<VBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+					<children>
+						<Label text="Scomposizione mcm">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextArea fx:id="scomposizionemcm" maxWidth="500.0" minHeight="100.0" minWidth="100.0" promptText="Scomposizione mcm" VBox.vgrow="ALWAYS" />
+					</children>
+				</VBox>
+				<HBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="4">
+					<children>
+						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="36.0" text="MCD">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextField fx:id="MCD" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="MCD" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+					<children>
+						<Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="35.0" text="mcm">
+							<font>
+								<Font size="16.0" />
+							</font>
+						</Label>
+						<TextField fx:id="mcm" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="mcm" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#trova" prefHeight="102.0" prefWidth="200.0" text="TROVA" GridPane.rowIndex="5">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+				<Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="102.0" prefWidth="200.0" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="5">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+			</children>
+			<padding>
+				<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+			</padding>
+		</GridPane>
+	</content>
+</ScrollPane>
