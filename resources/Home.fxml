@@ -14,7 +14,7 @@
 
 <ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.HomeController">
    <content>
-      <GridPane prefHeight="363.0" prefWidth="376.0" vgap="20.0">
+      <GridPane prefHeight="350.0" prefWidth="400.0" vgap="20.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
          </columnConstraints>
@@ -24,9 +24,9 @@
             <RowConstraints vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-      		<Label minHeight="31.0" minWidth="245.0" text="Selezionare un argomento" textFill="RED">
+      		<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="349.0" text="Selezionare un argomento" textFill="RED">
       			<font>
-      				<Font size="21.0" />
+      				<Font size="30.0" />
       			</font>
       		</Label>
       		<VBox alignment="CENTER" fillWidth="false" GridPane.rowIndex="1">
@@ -60,9 +60,9 @@
       				</VBox>
       			</children>
       		</VBox>
-      		<Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="65.0" minWidth="81.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="90.0" prefWidth="130.0" text="OK" GridPane.rowIndex="2">
+      		<Button maxHeight="125.0" maxWidth="125.0" minHeight="39.0" minWidth="49.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="70.0" text="OK" GridPane.rowIndex="2">
       			<font>
-      				<Font size="30.0" />
+      				<Font size="18.0" />
       			</font>
       		</Button>
          </children>
