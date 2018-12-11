@@ -54,6 +54,16 @@
 						<TextField fx:id="input2" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero intero positivo" HBox.hgrow="ALWAYS" />
 					</children>
 				</HBox>
+				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#trova" text="TROVA" GridPane.rowIndex="5">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
+				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="5">
+					<font>
+						<Font size="18.0" />
+					</font>
+				</Button>
 				<VBox alignment="CENTER" spacing="5.0" GridPane.rowIndex="2">
 					<children>
 						<Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="213.0" text="Scomposizione primo numero">
@@ -114,16 +124,6 @@
 						<TextField fx:id="mcm" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="mcm" HBox.hgrow="ALWAYS" />
 					</children>
 				</HBox>
-				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#trova" text="TROVA" GridPane.rowIndex="5">
-					<font>
-						<Font size="18.0" />
-					</font>
-				</Button>
-				<Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="5">
-					<font>
-						<Font size="18.0" />
-					</font>
-				</Button>
 			</children>
 			<padding>
 				<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
