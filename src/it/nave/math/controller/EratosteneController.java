@@ -15,10 +15,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 public class EratosteneController {
 	private static final int LABEL_SIZE = 50;
+	private static final int MIN_LABEL_SIZE = 25;
 	private static final int COLUMNS_NUM = 10;
 	private static final String STYLE = "-fx-border-style: solid inside;" + "-fx-border-insets: 1;"
 			+ "-fx-border-radius: 5;" + "-fx-border-color: black;";
@@ -155,13 +157,13 @@ public class EratosteneController {
 			output.appendText(", ");
 		}
 		output.appendText(Integer.toString(x));
-		Label label = (Label) gridpane.getChildren().get(x - 1);
-		label.setStyle(STYLE_PRIME);
+		VBox vbox = (VBox) gridpane.getChildren().get(x - 1);
+		vbox.setStyle(STYLE_PRIME);
 	}
 
 	private void markAsDelete(int x) {
-		Label label = (Label) gridpane.getChildren().get(x - 1);
-		label.setStyle(STYLE_DELETE);
+		VBox vbox = (VBox) gridpane.getChildren().get(x - 1);
+		vbox.setStyle(STYLE_DELETE);
 	}
 
 	private Timeline populateGridPane() {
@@ -175,27 +177,18 @@ public class EratosteneController {
 			indietro.setDisable(true);
 		});
 		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> gridpane.getChildren().clear());
-		VBox useless = new VBox();
-		useless.setStyle(STYLE);
-		useless.setMinSize(LABEL_SIZE, LABEL_SIZE);
-		useless.setPrefSize(LABEL_SIZE, LABEL_SIZE);
-		useless.setMaxSize(LABEL_SIZE, LABEL_SIZE);
+		VBox useless = buildVBox(false, -1);
 		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 			gridpane.add(useless, 0, 0);
 		});
 		int column = 1;
 		int row = 0;
 		for (long i = 2; i <= n; i++) {
-			Label label = new Label(Long.toString(i));
-			label.setMinSize(LABEL_SIZE, LABEL_SIZE);
-			label.setPrefSize(LABEL_SIZE, LABEL_SIZE);
-			label.setMaxSize(LABEL_SIZE, LABEL_SIZE);
-			label.setAlignment(Pos.CENTER);
-			label.setStyle(STYLE);
+			VBox vbox = buildVBox(true, i);
 			final int columnFinal = column;
 			final int rowFinal = row;
 			Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
-				gridpane.add(label, columnFinal, rowFinal);
+				gridpane.add(vbox, columnFinal, rowFinal);
 			});
 			column++;
 			if (column % COLUMNS_NUM == 0) {
@@ -208,6 +201,21 @@ public class EratosteneController {
 			indietro.setDisable(false);
 		});
 		return timeline;
+	}
+
+	private VBox buildVBox(boolean withLabel, long i) {		
+		VBox result = new VBox();
+		result.setStyle(STYLE);
+		result.setMinSize(MIN_LABEL_SIZE, MIN_LABEL_SIZE);
+		result.setPrefSize(Region.USE_COMPUTED_SIZE, LABEL_SIZE);
+		result.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+		if (withLabel) {
+			Label label = new Label(Long.toString(i));
+			label.setAlignment(Pos.CENTER);
+			result.getChildren().add(label);
+			result.setAlignment(Pos.CENTER);
+		}
+		return result;
 	}
 
 	private void ensureVisible(int num) {

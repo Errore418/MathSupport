@@ -1,33 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.EratosteneController">
-   <children>
-      <Label layoutX="265.0" layoutY="14.0" text="Crivello di Eratostene" textFill="RED">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
-      <Button fx:id="setaccia" layoutX="255.0" layoutY="488.0" mnemonicParsing="false" onAction="#setaccia" prefHeight="91.0" prefWidth="190.0" text="SETACCIA" />
-      <Button fx:id="indietro" layoutX="534.0" layoutY="488.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="91.0" prefWidth="190.0" text="INDIETRO" />
-      <ScrollPane fx:id="scrollpane" layoutX="237.0" layoutY="80.0" maxHeight="363.0" maxWidth="1000.0">
-         <content>
-            <GridPane fx:id="gridpane">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.EratosteneController">
+   <content>
+      <GridPane hgap="15.0" prefHeight="600.0" prefWidth="750.0" vgap="15.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="280.0" text="Crivello di Eratostene" textFill="RED" GridPane.columnSpan="2147483647">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" GridPane.rowIndex="1">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="165.0" text="Numero intero positivo">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="input" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero intero positivo" text="50" />
+               </children>
+            </VBox>
+            <Button fx:id="setaccia" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#setaccia" text="SETACCIA" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="indietro" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <VBox alignment="CENTER" GridPane.rowIndex="2">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="94.0" text="Numeri primi">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="output" maxWidth="400.0" minHeight="100.0" minWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <ScrollPane fx:id="scrollpane" fitToHeight="true" fitToWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+               <content>
+                  <GridPane fx:id="gridpane" prefWidth="500.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="10.0" />
+                     </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </GridPane>
-         </content>
-      </ScrollPane>
-      <Label layoutX="25.0" layoutY="107.0" text="Numero intero positivo" />
-      <Label layoutX="64.0" layoutY="215.0" text="Numeri primi" />
-      <TextField fx:id="input" layoutX="25.0" layoutY="132.0" prefHeight="25.0" prefWidth="124.0" promptText="Numero intero positivo" text="50" />
-      <TextArea fx:id="output" layoutX="13.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0" />
-   </children>
-</AnchorPane>
+   </content>
+</ScrollPane>
