@@ -2,6 +2,7 @@ package it.nave.math.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import it.nave.math.support.Tool;
 import javafx.scene.control.TextInputControl;
@@ -9,11 +10,11 @@ import javafx.scene.control.TextInputControl;
 public class ScomponiService {
 
 	private long n;
-	private TextInputControl output;
+	private Optional<TextInputControl> output;
 
 	public ScomponiService(long n, TextInputControl output) {
 		this.n = n;
-		this.output = output;
+		this.output = Optional.ofNullable(output);
 	}
 
 	public Map<Long, Integer> scomponi() {
@@ -28,7 +29,9 @@ public class ScomponiService {
 				n /= divisor;
 			}
 		}
-		Tool.writeFactors(factors, output);
+		if (output.isPresent()) {
+			Tool.writeFactors(factors, output.get());
+		}
 		return factors;
 	}
 

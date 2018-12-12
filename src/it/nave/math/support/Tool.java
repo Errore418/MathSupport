@@ -1,7 +1,12 @@
 package it.nave.math.support;
 
 import java.io.IOException;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -83,6 +88,31 @@ public class Tool {
 		alert.setTitle("ERRORE");
 		alert.setHeaderText("Errore nel parsing");
 		alert.showAndWait();
+	}
+
+	public static Map<Long, Integer> calculateMCD(Map<Long, Integer> factors1, Map<Long, Integer> factors2) {
+		Map<Long, Integer> result = factors1.entrySet().stream().filter(e -> factors2.containsKey(e.getKey()))
+				.map(e -> new SimpleEntry<>(e.getKey(), Math.min(e.getValue(), factors2.get(e.getKey()))))
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+		if (result.isEmpty()) {
+			result.put(1l, 1);
+		}
+		return result;
+	}
+
+	public static Map<Long, Integer> calculatemcm(Map<Long, Integer> factors1, Map<Long, Integer> factors2) {
+		Map<Long, Integer> result = new HashMap<>(factors1);
+		factors2.forEach((k, v) -> result.merge(k, v, Math::max));
+		return result;
+	}
+
+	public static long calculateAndWrite(Map<Long, Integer> factors, Optional<TextInputControl> output) {
+		long result = factors.entrySet().stream().map(e -> Math.pow(e.getKey(), e.getValue())).reduce((a, b) -> a * b)
+				.orElse(1d).longValue();
+		if (output.isPresent()) {
+			output.get().setText(Long.toString(result));
+		}
+		return result;
 	}
 
 }
