@@ -34,7 +34,13 @@ public class FrazioniController {
 
 	@FXML
 	private void genera() {
-		Fraction f = new Fraction(input.getText());
+		Fraction f;
+		try {
+			f = new Fraction(input.getText());
+		} catch (IllegalArgumentException e) {
+			Tool.inputNotValid("La stringa non è un decimale valido");
+			return;
+		}
 		scriviFrazione(f);
 	}
 

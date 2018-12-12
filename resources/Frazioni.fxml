@@ -1,25 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.FrazioniController">
-   <children>
-      <Label layoutX="280.0" layoutY="31.0" text="Frazioni generatrici" />
-      <TextField fx:id="input" layoutX="191.0" layoutY="96.0" promptText="Numero decimale" />
-      <TextField fx:id="numeratore1" layoutX="182.0" layoutY="229.0" promptText="Numeratore" />
-      <TextField fx:id="denominatore1" layoutX="182.0" layoutY="296.0" promptText="Denominatore" />
-      <TextField fx:id="numeratore2" layoutX="381.0" layoutY="242.0" promptText="Numeratore semplificato" />
-      <TextField fx:id="denominatore2" layoutX="381.0" layoutY="296.0" promptText="Denominatore semplificato" />
-      <Label layoutX="55.0" layoutY="100.0" text="Numero decimale" />
-      <Label layoutX="229.0" layoutY="183.0" text="Frazione generatrice" />
-      <Label layoutX="381.0" layoutY="192.0" text="Frazione generatrice semplificata" />
-      <Line endX="65.0" layoutX="257.0" layoutY="277.0" startX="-73.0" />
-      <Line endX="61.0" layoutX="468.0" layoutY="278.0" startX="-80.0" />
-      <Button layoutX="114.0" layoutY="350.0" mnemonicParsing="false" onAction="#genera" text="GENERA" />
-      <Button layoutX="388.0" layoutY="350.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" />
-   </children>
-</AnchorPane>
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nave.math.controller.FrazioniController">
+   <content>
+      <GridPane hgap="20.0" prefHeight="450.0" prefWidth="550.0" vgap="20.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="252.0" text="Frazioni generatrici" textFill="RED" GridPane.columnSpan="2147483647">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="20.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="126.0" text="Numero decimale">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="input" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero decimale" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="2">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="144.0" text="Frazione generatrice">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="numeratore1" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numeratore" />
+                  <Line endX="145.5" startX="-73.0" />
+                  <TextField fx:id="denominatore1" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Denominatore" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="232.0" text="Frazione generatrice semplificata">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="numeratore2" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numeratore semplificato" />
+                  <Line endX="152.5" startX="-73.0" />
+                  <TextField fx:id="denominatore2" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Denominatore semplificato" />
+               </children>
+            </VBox>
+            <Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#genera" text="GENERA" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button maxHeight="102.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </GridPane>
+   </content>
+</ScrollPane>
