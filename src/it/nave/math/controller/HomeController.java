@@ -27,7 +27,11 @@ public class HomeController {
 		case "MCDmcm":
 			Tool.startNewStage("MCDmcm.fxml", "MCD e mcm", selected);
 			break;
+		case "frazioni":
+			Tool.startNewStage("Frazioni.fxml", "Frazioni generatrici", selected);
+			break;
 		}
+
 	}
 
 	@FXML

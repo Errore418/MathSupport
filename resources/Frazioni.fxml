@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="280.0" layoutY="31.0" text="Frazioni generatrici" />
+      <TextField fx:id="input" layoutX="191.0" layoutY="96.0" promptText="Numero decimale" />
+      <TextField fx:id="numeratore1" layoutX="182.0" layoutY="229.0" promptText="Numeratore" />
+      <TextField fx:id="denominatore1" layoutX="182.0" layoutY="296.0" promptText="Denominatore" />
+      <TextField fx:id="numeratore2" layoutX="381.0" layoutY="242.0" promptText="Numeratore semplificato" />
+      <TextField fx:id="denominatore2" layoutX="381.0" layoutY="296.0" promptText="Denominatore semplificato" />
+      <Label layoutX="55.0" layoutY="100.0" text="Numero decimale" />
+      <Label layoutX="229.0" layoutY="183.0" text="Frazione generatrice" />
+      <Label layoutX="381.0" layoutY="192.0" text="Frazione generatrice semplificata" />
+      <Line endX="65.0" layoutX="257.0" layoutY="277.0" startX="-73.0" />
+      <Line endX="61.0" layoutX="468.0" layoutY="278.0" startX="-80.0" />
+   </children>
+</AnchorPane>

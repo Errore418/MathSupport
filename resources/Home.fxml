@@ -56,6 +56,11 @@
       								<Font size="21.0" />
       							</font>
       						</RadioButton>
+                        <RadioButton fx:id="frazioni" minHeight="31.0" minWidth="214.0" mnemonicParsing="false" text="Frazioni generatrici" toggleGroup="$homeGroup">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </RadioButton>
       					</children>
       				</VBox>
       			</children>
