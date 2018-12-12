@@ -46,14 +46,13 @@ public class FrazioniController {
 
 	private void scriviFrazione(Fraction f) {
 		if (!f.getPeriodo().isPresent()) {
-			String numeratore = (f.getIntera().get().matches("0+") ? "" : f.getIntera().get())
-					+ f.getAntiperiodo().orElse("");
+			String intera = f.getIntera().get().replaceAll("^0+", "");
+			String antiperiodo = f.getAntiperiodo().orElse("").replaceAll("0+$", "");
+			String numeratore = intera + ((intera.isEmpty()) ? antiperiodo.replaceAll("^0+", "") : antiperiodo);
 			String denominatore = "1";
-			if (f.getAntiperiodo().isPresent()) {
-				long zero = f.getAntiperiodo().get().chars().count();
-				for (int i = 0; i < zero; i++) {
-					denominatore += "0";
-				}
+			long zero = antiperiodo.chars().count();
+			for (int i = 0; i < zero; i++) {
+				denominatore += "0";
 			}
 			numeratore1.setText(numeratore);
 			denominatore1.setText(denominatore);
