@@ -2,6 +2,7 @@ package it.nave.math.controller;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import it.nave.math.support.Tool;
@@ -27,6 +28,7 @@ public class EratosteneController {
 	private static final String STYLE_PRIME = STYLE + "-fx-background-color: green;";
 	private static final String STYLE_DELETE = STYLE + "-fx-background-color: red;";
 	private static final int DEFAULT_NUM = 50;
+	private static final int MAX_NUM = 5000;
 	private static final double BUILD_FRAME_DURATION_DEFAULT = 50;
 	private static final double SETACCIO_FRAME_DURATION_DEFAULT = 500;
 	private static final int PRIME_PER_ROW = 10;
@@ -43,31 +45,47 @@ public class EratosteneController {
 	private Button setaccia;
 	@FXML
 	private Button indietro;
+	@FXML
+	private Button play;
+	@FXML
+	private Button pausa;
 
 	private int n;
 	private int outputRow = 1;
 
 	private Set<Integer> deletes = new HashSet<>();
 
+	private Optional<Timeline> populateTimeline = Optional.empty();
+	private Optional<Timeline> setacciaTimeline = Optional.empty();
+
 	@FXML
 	private void initialize() {
 		scrollpane.setPrefViewportWidth(COLUMNS_NUM * LABEL_SIZE);
-		populateGridPane().play();
+		populateTimeline = Optional.of(populateGridPane());
+		populateTimeline.ifPresent(Timeline::play);
+	}
+
+	@FXML
+	private void pausa() {
+		populateTimeline.ifPresent(Timeline::pause);
+		setacciaTimeline.ifPresent(Timeline::pause);
+	}
+
+	@FXML
+	private void play() {
+		populateTimeline.ifPresent(Timeline::play);
+		setacciaTimeline.ifPresent(Timeline::play);
 	}
 
 	@FXML
 	private void backToHome() throws IOException {
+		populateTimeline.ifPresent(Timeline::stop);
+		setacciaTimeline.ifPresent(Timeline::stop);
 		Tool.startNewStage("Home.fxml", "Welcome", gridpane);
 	}
 
 	@FXML
-	private void generaGriglia() {
-		populateGridPane().play();
-	}
-
-	@FXML
 	private void setaccia() {
-		Timeline populate = null;
 		int current = 0;
 		try {
 			current = Tool.parseIntTextInputControl(input, 0, Tool.MESSAGE_POSITIVE);
@@ -76,30 +94,36 @@ public class EratosteneController {
 			return;
 		}
 		if (current != gridpane.getChildren().size()) {
-			populate = populateGridPane();
+			populateTimeline = Optional.of(populateGridPane());
 		}
-		Timeline setaccio = buildSetaccioTimeline();
-		if (populate != null) {
-			populate.setOnFinished(e -> {
-				setaccio.play();
+		Timeline setaccia = buildSetaccioTimeline();
+		setaccia.setOnFinished(e -> {
+			setacciaTimeline = Optional.empty();
+		});
+		if (populateTimeline.isPresent()) {
+			populateTimeline.get().setOnFinished(e -> {
+				setacciaTimeline = Optional.of(setaccia);
+				setacciaTimeline.get().play();
 			});
-			populate.play();
+			populateTimeline.get().play();
 		} else {
-			setaccio.play();
+			setacciaTimeline = Optional.of(setaccia);
+			setacciaTimeline.get().play();
 		}
 	}
 
 	private Timeline buildSetaccioTimeline() {
-		double setaccioFrameDuration = (n > DEFAULT_NUM) ? SETACCIO_FRAME_DURATION_DEFAULT * DEFAULT_NUM / n
+		double setaccioFrameDuration = (n > DEFAULT_NUM)
+				? SETACCIO_FRAME_DURATION_DEFAULT * DEFAULT_NUM / Math.min(n, MAX_NUM)
 				: SETACCIO_FRAME_DURATION_DEFAULT;
 		long countFrame = 0;
 		Timeline timeline = new Timeline();
 		Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 			setaccia.setDisable(true);
-			indietro.setDisable(true);
+			play.setDisable(false);
+			pausa.setDisable(false);
 			clean();
 		});
-
 		deletes.clear();
 		outputRow = 1;
 		int num = 0;
@@ -109,7 +133,6 @@ public class EratosteneController {
 				ensureVisible(numFinal);
 				markAsPrime(numFinal);
 			});
-
 			if (num <= Math.sqrt(n)) {
 				for (int i = num + 1; i <= n; i++) {
 					if (i % num == 0 && !deletes.contains(i)) {
@@ -124,10 +147,11 @@ public class EratosteneController {
 			}
 			deletes.add(num++);
 		}
-
 		Tool.addKeyFrame(timeline, countFrame++, setaccioFrameDuration, e -> {
 			setaccia.setDisable(false);
-			indietro.setDisable(false);
+			play.setDisable(true);
+			pausa.setDisable(true);
+			setacciaTimeline = Optional.empty();
 		});
 		return timeline;
 	}
@@ -168,13 +192,15 @@ public class EratosteneController {
 
 	private Timeline populateGridPane() {
 		n = Tool.parseIntTextInputControl(input, 0, Tool.MESSAGE_POSITIVE);
-		double buildFrameDuration = (n > DEFAULT_NUM) ? BUILD_FRAME_DURATION_DEFAULT * DEFAULT_NUM / n
+		double buildFrameDuration = (n > DEFAULT_NUM)
+				? BUILD_FRAME_DURATION_DEFAULT * DEFAULT_NUM / Math.min(n, MAX_NUM)
 				: BUILD_FRAME_DURATION_DEFAULT;
 		long countFrame = 0;
 		Timeline timeline = new Timeline();
 		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
 			setaccia.setDisable(true);
-			indietro.setDisable(true);
+			play.setDisable(false);
+			pausa.setDisable(false);
 		});
 		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> gridpane.getChildren().clear());
 		VBox useless = buildVBox(false, -1);
@@ -197,13 +223,17 @@ public class EratosteneController {
 			}
 		}
 		Tool.addKeyFrame(timeline, countFrame++, buildFrameDuration, e -> {
-			setaccia.setDisable(false);
-			indietro.setDisable(false);
+			populateTimeline = Optional.empty();
+			if (!setacciaTimeline.isPresent()) {
+				setaccia.setDisable(false);
+				play.setDisable(true);
+				pausa.setDisable(true);
+			}
 		});
 		return timeline;
 	}
 
-	private VBox buildVBox(boolean withLabel, long i) {		
+	private VBox buildVBox(boolean withLabel, long i) {
 		VBox result = new VBox();
 		result.setStyle(STYLE);
 		result.setMinSize(MIN_LABEL_SIZE, MIN_LABEL_SIZE);

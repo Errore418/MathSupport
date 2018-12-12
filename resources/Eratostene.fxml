@@ -41,16 +41,39 @@
                   <TextField fx:id="input" maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="100.0" prefHeight="25.0" promptText="Numero intero positivo" text="50" />
                </children>
             </VBox>
-            <Button fx:id="setaccia" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#setaccia" text="SETACCIA" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="indietro" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <GridPane hgap="15.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="setaccia" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#setaccia" text="SETACCIA">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="indietro" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#backToHome" text="INDIETRO" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="play" disable="true" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#play" text="PLAY" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="pausa" disable="true" maxHeight="100.0" maxWidth="200.0" minHeight="39.0" minWidth="103.0" mnemonicParsing="false" onAction="#pausa" text="PAUSA" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
             <VBox alignment="CENTER" GridPane.rowIndex="2">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="94.0" text="Numeri primi">
